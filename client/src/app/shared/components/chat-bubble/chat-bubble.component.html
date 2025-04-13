@@ -1,0 +1,11 @@
+<!-- src/app/shared/components/chat-bubble/chat-bubble.component.html -->
+<div [ngClass]="{
+  'user': message.sender === 'user',
+  'bot': message.sender === 'bot',
+  'positive': message.sender === 'bot' && message.sentiment === 'positive',
+  'neutral': message.sender === 'bot' && message.sentiment === 'neutral',
+  'negative': message.sender === 'bot' && message.sentiment === 'negative'
+}">
+  <span>{{ message.text }}</span>
+  <small *ngIf="message.sentiment">({{ message.sentiment }})</small>
+</div>

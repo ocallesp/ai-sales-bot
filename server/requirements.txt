@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+transformers
+sqlite3
+pydantic
+python-socketio

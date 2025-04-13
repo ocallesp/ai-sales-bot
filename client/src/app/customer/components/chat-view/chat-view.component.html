@@ -1,0 +1,19 @@
+<!-- src/app/customer/components/chat-view/chat-view.component.html -->
+<mat-card>
+  <mat-card-title>AI Sales Bot</mat-card-title>
+  <mat-card-content class="chat-container">
+    <div class="messages" #messageContainer>
+      <app-chat-bubble *ngFor="let message of messages" [message]="message"></app-chat-bubble>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <form [formGroup]="chatForm" (ngSubmit)="send()">
+      <mat-form-field appearance="outline">
+        <mat-label>Ask about products...</mat-label>
+        <input matInput formControlName="text">
+        <mat-error *ngIf="chatForm.get('text')?.hasError('required')">Message is required</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="chatForm.invalid">Send</button>
+    </form>
+  </mat-card-actions>
+</mat-card>

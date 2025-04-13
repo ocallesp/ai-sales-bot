@@ -1,0 +1,35 @@
+// src/app/shared/components/chat-bubble/chat-bubble.component.scss
+div {
+  padding: 8px 12px;
+  border-radius: 12px;
+  margin: 4px 8px;
+  max-width: 70%;
+}
+
+.user {
+  background: #e0f7fa;
+  align-self: flex-end;
+  text-align: right;
+}
+
+.bot {
+  align-self: flex-start;
+  color: white;
+}
+
+.positive {
+  background: #4caf50; /* Green for positive */
+}
+
+.neutral {
+  background: #ff9800; /* Orange for neutral */
+}
+
+.negative {
+  background: #f44336; /* Red for negative */
+}
+
+small {
+  margin-left: 8px;
+  font-size: 0.8em;
+}

@@ -1,0 +1,54 @@
+# Python/FastAPI (server) ignores
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+
+# Python bytecode and caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+*.egg
+
+# Environment files
+.env
+
+# macOS/Linux/Windows system files
+.DS_Store
+Thumbs.db
+
+# Server build artifacts
+server/static/  # We'll add the Angular build output here manually during deployment
+
+# Angular (client) ignores
+# Node modules
+client/node_modules/
+
+# Angular build output
+client/dist/
+
+# Angular dependency lock files (if using Yarn, ignore yarn.lock instead)
+client/package-lock.json
+
+# Angular IDE files
+client/.angular/
+client/.vscode/
+client/.idea/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp

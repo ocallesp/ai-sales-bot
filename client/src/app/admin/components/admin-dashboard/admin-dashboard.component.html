@@ -1,0 +1,101 @@
+<!-- src/app/admin/components/admin-dashboard/admin-dashboard.component.html -->
+<mat-card>
+  <mat-card-title>Admin Dashboard</mat-card-title>
+  <mat-card-content>
+    <h2>Monthly Sentiment Analysis</h2>
+    <table mat-table [dataSource]="monthlyData">
+      <ng-container matColumnDef="month">
+        <th mat-header-cell *matHeaderCellDef>Month</th>
+        <td mat-cell *matCellDef="let row">{{ row.month }}</td>
+      </ng-container>
+      <ng-container matColumnDef="positive">
+        <th mat-header-cell *matHeaderCellDef>Positive (%)</th>
+        <td mat-cell *matCellDef="let row">{{ row.positive }}</td>
+      </ng-container>
+      <ng-container matColumnDef="neutral">
+        <th mat-header-cell *matHeaderCellDef>Neutral (%)</th>
+        <td mat-cell *matCellDef="let row">{{ row.neutral }}</td>
+      </ng-container>
+      <ng-container matColumnDef="negative">
+        <th mat-header-cell *matHeaderCellDef>Negative (%)</th>
+        <td mat-cell *matCellDef="let row">{{ row.negative }}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <button mat-raised-button color="warn" (click)="clearChatHistory()">Clear Chat History</button>
+
+    <h2>All Messages</h2>
+    <table mat-table [dataSource]="messages">
+      <ng-container matColumnDef="timestamp">
+        <th mat-header-cell *matHeaderCellDef>Timestamp</th>
+        <td mat-cell *matCellDef="let msg">{{ msg.timestamp }}</td>
+      </ng-container>
+      <ng-container matColumnDef="sender">
+        <th mat-header-cell *matHeaderCellDef>Sender</th>
+        <td mat-cell *matCellDef="let msg">{{ msg.sender }}</td>
+      </ng-container>
+      <ng-container matColumnDef="text">
+        <th mat-header-cell *matHeaderCellDef>Text</th>
+        <td mat-cell *matCellDef="let msg">{{ msg.text }}</td>
+      </ng-container>
+      <ng-container matColumnDef="sentiment">
+        <th mat-header-cell *matHeaderCellDef>Sentiment</th>
+        <td mat-cell *matCellDef="let msg">{{ msg.sentiment }}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="messageColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: messageColumns;"></tr>
+    </table>
+
+    <h2>Current Products</h2>
+    <table mat-table [dataSource]="products">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let product">{{ product.id }}</td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let product">{{ product.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>Price</th>
+        <td mat-cell *matCellDef="let product">{{ product.price }}</td>
+      </ng-container>
+      <ng-container matColumnDef="stock">
+        <th mat-header-cell *matHeaderCellDef>Stock</th>
+        <td mat-cell *matCellDef="let product">{{ product.stock }}</td>
+      </ng-container>
+      <ng-container matColumnDef="discount">
+        <th mat-header-cell *matHeaderCellDef>Discount</th>
+        <td mat-cell *matCellDef="let product">{{ product.discount }}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="productColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: productColumns;"></tr>
+    </table>
+
+    <h2>Manage Products</h2>
+    <form [formGroup]="productForm" (ngSubmit)="addProduct()">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+        <mat-error *ngIf="productForm.get('name')?.hasError('required')">Name is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Price</mat-label>
+        <input matInput type="number" formControlName="price">
+        <mat-error *ngIf="productForm.get('price')?.hasError('required')">Price is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Stock</mat-label>
+        <input matInput type="number" formControlName="stock">
+        <mat-error *ngIf="productForm.get('stock')?.hasError('required')">Stock is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Discount</mat-label>
+        <input matInput formControlName="discount">
+        <mat-error *ngIf="productForm.get('discount')?.hasError('required')">Discount is required</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="productForm.invalid">Add Product</button>
+    </form>
+  </mat-card-content>
+</mat-card>

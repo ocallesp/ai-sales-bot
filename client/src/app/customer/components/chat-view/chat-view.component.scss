@@ -1,0 +1,30 @@
+// src/app/customer/components/chat-view/chat-view.component.scss
+mat-card {
+  margin: 16px auto;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: 60vh; /* Limit the message area height to avoid taking up too much space */
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+form {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+}
+
+mat-form-field {
+  flex: 1;
+}
